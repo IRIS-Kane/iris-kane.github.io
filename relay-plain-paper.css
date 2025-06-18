@@ -1,0 +1,17 @@
+.relay-plain-paper {
+  max-width: 600px;
+  min-height: 200px;
+  margin: auto;
+  border: 48px solid;
+  border-image-source: url(https://github.com/IRIS-Kane/ardent/blob/36d89fbe11d05769357a4a3dbb3640ea92e9bce3/paper-border-2.png);
+  border-image-slice: 12.5% fill;
+  border-image-repeat: stretch;
+  padding: 30px 90px;
+  color: black;
+  font-size: 14px;
+  font-family: ;
+}
+
+.relay-plain-paper b {
+  color: darkgreen;
+}
