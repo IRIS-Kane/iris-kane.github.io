@@ -1,6 +1,6 @@
 .relay-plain-paper {
   max-width: 600px;
-  min-height: 200px;
+  min-height: 300px;
   margin: auto;
   border: 60px solid;
   border-image-source: url("https://iris-kane.github.io/paper-border-2.png");
@@ -10,5 +10,5 @@
 }
 
 .relay-plain-paper b, .relay-plain-paper mycode_b {
-  color: darkblue;
+  
 }
