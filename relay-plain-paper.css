@@ -2,16 +2,13 @@
   max-width: 600px;
   min-height: 200px;
   margin: auto;
-  border: 48px solid;
+  border: 60px solid;
   border-image-source: url("https://iris-kane.github.io/paper-border-2.png");
-  border-image-slice: 12.5% fill;
+  border-image-slice: 60 fill;
   border-image-repeat: stretch;
-  padding: 30px 90px;
   color: black;
-  font-size: 14px;
-  font-family: ;
 }
 
-.relay-plain-paper b {
-  color: darkgreen;
+.relay-plain-paper b, .relay-plain-paper mycode_b {
+  color: darkblue;
 }
