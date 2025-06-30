@@ -22,6 +22,10 @@
 .relay-plain-paper.blank {
   border-image-source: url("https://iris-kane.github.io/paper-border-2.png");
 }
+.relay-plain-paper.clean.blank {
+  border-image-source: url("https://iris-kane.github.io/clean paper scroll.png");
+  border-image-slice: 120 40 120 40 fill;
+}
 
 .relay-plain-paper b, .relay-plain-paper mycode_b {
   
