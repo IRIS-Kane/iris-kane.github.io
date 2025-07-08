@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 .ayato-v1-wrapper {
     background-color: #fffaf2;
     width: 700px;
@@ -9,8 +11,13 @@
     position: relative;
 }
 .ayato-v1-content {
+    font-family: "Roboto+Condensed" sans-serif;
     border: 22px solid transparent;
     border-image: url("ayato-border-1.svg") 26 stretch;
     padding: 1em;
     margin-top: 200px;
+}
+
+@media (max-width: 1200px) {
+.ayato-v1-wrapper img {display: none}
 }
