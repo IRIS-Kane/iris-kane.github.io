@@ -1,0 +1,16 @@
+.ayato-v1-wrapper {
+    background-color: #fffaf2;
+    width: 700px;
+    margin: auto;
+    max-height: 900px;
+    padding: 2em;
+    border: 3px solid #b0453a;
+    box-shadow: 5px 5px 10px gray;
+    position: relative;
+}
+.ayato-v1-content {
+    border: 22px solid transparent;
+    border-image: url("border.svg") 26 stretch;
+    padding: 1em;
+    margin-top: 200px;
+}
