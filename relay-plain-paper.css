@@ -29,6 +29,8 @@
   border-image-slice: 120 40 120 40 fill;
 }
 
-.relay-plain-paper b, .relay-plain-paper mycode_b {
-  color: black;
+@media (min-width: 1200px) {
+  .relay-plain-paper b, .relay-plain-paper mycode_b {
+    color: black;
+  }
 }
