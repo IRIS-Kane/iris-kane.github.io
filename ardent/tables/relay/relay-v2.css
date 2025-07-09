@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.relay-plain-paper {
+  max-width: 600px;
+  min-height: 300px;
+  margin: auto;
+  padding: 0em 0 4em 0;
+  border: 60px solid;
+  border-image-source: url("https://iris-kane.github.io/paper-border-2.png");
+  border-image-slice: 60 fill;
+  border-image-repeat: stretch;
+  color: #3e2f1c;
+  font-size: 14px;
+  font-family: Poppins, sans-serif;
+}
+
+.relay-plain-paper.long {
+  border-image-source: url("https://iris-kane.github.io/paper-border-3-long.png");
+}
+.relay-plain-paper.short {
+
+  border-image-source: url("https://iris-kane.github.io/paper-border-3-short.png");
+}
+.relay-plain-paper.blank {
+  border-image-source: url("https://iris-kane.github.io/paper-border-2.png");
+}
+.relay-plain-paper.clean.blank {
+  border-image-source: url("https://iris-kane.github.io/paper-scroll-clean.png");
+  border-image-slice: 120 40 120 40 fill;
+}
+
+@media (min-width: 1200px) {
+  .relay-plain-paper b, .relay-plain-paper mycode_b {
+    color: black;
+  }
+}
