@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-
 .ayato-v1-wrapper {
     background-color: #fffaf2;
     width: 700px;
@@ -16,6 +14,7 @@
     border-image: url("ayato-border-1.svg") 26 stretch;
     padding: 1em;
     margin-top: 200px;
+    text-align: justify;
 }
 
 @media (max-width: 1200px) {
