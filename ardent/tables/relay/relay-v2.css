@@ -3,15 +3,15 @@
 .relay-v2-wrapper {
   max-width: 600px;
   min-height: 300px;
-  margin: auto;
-  padding: 0em 0 4em 0;
-  border: 60px solid;
+  margin: auto auto 200px auto;
+  border: 40px solid;
   border-image-source: url("https://iris-kane.github.io/paper-border-2.png");
   border-image-slice: 60 fill;
-  border-image-repeat: stretch;
   color: #3e2f1c;
   font-size: 14px;
   font-family: Poppins, sans-serif;
+  padding: 0 0 70px 0;
+  position: relative;
 }
 
 .relay-v2-content {
@@ -19,7 +19,10 @@
 }
 
 .relay-v2-feature-img {
-  height: 300px;
+  width: 480px;
+  position: absolute;
+  clip-path: path("M0 0 L175 110 L312 110 L312 0 L480 0 L480 320 L0 320 Z");
+  bottom: -244px;
 }
 
 @media (min-width: 1200px) {
