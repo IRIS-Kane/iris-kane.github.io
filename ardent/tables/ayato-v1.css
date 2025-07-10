@@ -9,14 +9,16 @@
     position: relative;
 }
 .ayato-v1-content {
+    padding: 1em;
     font-family: "Roboto+Condensed" sans-serif;
+    color: ##101314;
+    text-align: justify;
     border: 22px solid transparent;
     border-image: url("ayato-border-1.svg") 26 stretch;
-    padding: 1em;
     margin-top: 200px;
-    text-align: justify;
 }
 
 @media (max-width: 1200px) {
-.ayato-v1-wrapper img {display: none}
+    .ayato-v1-wrapper img {display: none}
+    .ayato-v1-content {margin-top: unset;}
 }
