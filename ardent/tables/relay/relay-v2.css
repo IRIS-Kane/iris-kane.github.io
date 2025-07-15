@@ -30,3 +30,9 @@
     color: black;
   }
 }
+
+@media (max-width: 1200px) {
+  .relay-v2-feature-img {
+    display: none;
+  }
+}
