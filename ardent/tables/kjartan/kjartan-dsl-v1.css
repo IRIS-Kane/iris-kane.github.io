@@ -5,18 +5,32 @@
     position: relative;
 }
 .kjartan-dsl-v1-content {
-    width: 400px;
+    position: relative;
     margin: 0 auto 70px;
-    padding: 1em;
+    padding: 3em 3em 6em;;
+    width: 400px;
     color: #101314;
     text-align: justify;
+    background-color: antiquewhite;
+    shape-margin: polygon(49.36% 93.59%, 7.27% 95.56%, 145px 43.85%);
+}
+
+.kjartan-dsl-v1-content:before {
+    position: absolute;
+    content: "";
+    inset: 0px;
     border: 48px solid transparent;
+    border-width: 48px;
     border-image: url("https://iris-kane.github.io/ardent/tables/kjartan/kjartan-dsl-border-v1.svg") 30 stretch;
+    filter: hue-rotate(60deg) brightness(70%) contrast(80%);
 }
 
 .kjartan-dsl-v1-feature {
     width: 400px;
     position: absolute;
+    bottom: -40px;
+    left: -10px;
+    z-index: 1;
     
 }
 
