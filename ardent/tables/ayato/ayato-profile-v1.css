@@ -1,3 +1,68 @@
-.blocky {
-  border: 1px solid;
+body {
+  background-position: top;
+  background-attachment: fixed;
 }
+
+.profinfowrap, .profav, .profinfo.blocky, .blocky:has(.ayato-panel-selector) {
+    border: 42px solid transparent;
+    border-image: url('https://iris-kane.github.io/ardent/tables/ayato/ayato-border-2.svg') 44 stretch;
+    background-color: #0f1414cc;
+}
+
+#content table, #content .footer {
+    background-color: #0f1414cc;
+}
+
+.blocky {
+  background-color: transparent;
+}
+
+.profinfowrap .profinfo .blocky {
+  text-align: center;
+  border-width: 0px;
+  border-color: #b0453aff;
+  border-style: solid;
+  border-top-width: 2px;
+  border-left-width: 30px;
+}
+
+.profinfowrap .profinfo .blocky span {
+  display: none;
+}
+
+.profinfowrap .profinfo .blocky a span {
+  display: unset;
+}
+
+.profinfowrap .profinfo .blocky:before { 
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  position: absolute;
+  left: -30px;
+  top: 0px;
+  color: black;
+  line-height: 12px;
+  letter-spacing: -5px;
+  font-family: Redressed;
+  height: 100%;
+  width: 30px;
+  align-content: center;
+}
+
+.profinfowrap .profinfo:nth-child(1) .blocky:nth-child(1):before {content: 'Full Name';}
+.profinfowrap .profinfo:nth-child(1) .blocky:nth-child(2):before {content: 'NIck Name';}
+.profinfowrap .profinfo:nth-child(1) .blocky:nth-child(3):before {content: 'Age';}
+.profinfowrap .profinfo:nth-child(1) .blocky:nth-child(4):before {content: 'DOB'; letter-spacing: -1px;}
+.profinfowrap .profinfo:nth-child(3) .blocky:nth-child(1):before {content: 'Size';}
+.profinfowrap .profinfo:nth-child(3) .blocky:nth-child(2):before {content: 'Height'; font-size: 0.9em;}
+.profinfowrap .profinfo:nth-child(3) .blocky:nth-child(3):before {content: 'Build';}
+.profinfowrap .profinfo:nth-child(3) .blocky:nth-child(4):before {content: 'Align ment';}
+.profinfowrap .profinfo:nth-child(5) .blocky:nth-child(1):before {content: 'Gend';}
+.profinfowrap .profinfo:nth-child(5) .blocky:nth-child(2):before {content: 'Sexua lity';}
+.profinfowrap .profinfo:nth-child(5) .blocky:nth-child(3):before {content: 'Pack';}
+.profinfowrap .profinfo:nth-child(5) .blocky:nth-child(4):before {content: 'Rank';}
+.profinfowrap .profinfo:nth-child(7) .blocky:nth-child(1):before {content: 'Posts';}
+.profinfowrap .profinfo:nth-child(7) .blocky:nth-child(2):before {content: 'Gems';}
+.profinfowrap .profinfo:nth-child(7) .blocky:nth-child(3):before {content: 'Log';}
+.profinfowrap .profinfo:nth-child(7) .blocky:nth-child(4):before {content: 'Player'; font-size: 0.8em;}
+
