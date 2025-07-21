@@ -10,11 +10,17 @@
     padding: 1em;
     color: #101314;
     text-align: justify;
-    border: 22px solid transparent;
-    border-image: url("https://iris-kane.github.io/ardent/tables/kjartan/kjartan-border-v1.png") 26 stretch;
+    border: 48px solid transparent;
+    border-image: url("https://iris-kane.github.io/ardent/tables/kjartan/kjartan-dsl-border-v1.svg") 30 stretch;
+}
+
+.kjartan-dsl-v1-feature {
+    width: 400px;
+    position: absolute;
+    
 }
 
 @media (max-width: 1200px) {
-    .kjartan-dsl-wrapper img {display: none}
+    .kjartan-dsl-v1-feature {display: none}
     .kjartan-dsl-content {}
 }
