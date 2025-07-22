@@ -25,14 +25,15 @@
     filter: hue-rotate(60deg) brightness(70%) contrast(80%);
 }
 
-.kjartan-dsl-v1-feature {
+.kjartan-dsl-v1-feature-img {
     width: 500px;
     position: absolute;
     bottom: -40px;
     left: -10px;
     z-index: 1;
-    
+    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6686631c-3c46-4e40-b13a-732a8cddb909/dk6u0c8-78f4e925-1c01-49ae-9d84-517892c1050e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzY2ODY2MzFjLTNjNDYtNGU0MC1iMTNhLTczMmE4Y2RkYjkwOVwvZGs2dTBjOC03OGY0ZTkyNS0xYzAxLTQ5YWUtOWQ4NC01MTc4OTJjMTA1MGUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.FoKe3t0zZh8bpZ4cNKm7kAIWUA3UJD_EAxl-5MrtPLM');
 }
+
 
 @media (max-width: 1200px) {
     .kjartan-dsl-v1-feature {display: none}
