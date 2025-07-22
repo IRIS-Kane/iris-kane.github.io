@@ -11,29 +11,52 @@
     margin: 0 auto 70px;
     padding: 3em 3em 6em;;
     width: 500px;
-    color: #101314;
+    color: #FFF;
     text-align: justify;
-    background-color: antiquewhite;
+    background-color: #222324;
     shape-margin: polygon(49.36% 93.59%, 7.27% 95.56%, 145px 43.85%);
+    background-image: linear-gradient(0.95turn,#121517,#536577);
+    font-family: "Amarante";
+    z-index: 10;
+    /*! display: block; */
+    height: 100%;
+}
+
+.kjartan-dsl-diag{
+    color: transparent;
+    background: linear-gradient(to bottom, #7B3028, #DF9350, #DF9350, #7B3028);
+    background-clip: text;
 }
 
 .kjartan-dsl-v1-content:before {
     position: absolute;
     content: "";
-    inset: 0px;
-    border: 48px solid transparent;
-    border-width: 48px;
-    border-image: url("https://iris-kane.github.io/ardent/tables/kjartan/kjartan-dsl-border-v1.svg") 30 stretch;
-    filter: hue-rotate(60deg) brightness(70%) contrast(80%);
+    inset: 8px;
+    border: 62px solid transparent;
+    border-image: url("https://iris-kane.github.io/ardent/tables/kjartan/kjartan-dsl-border-v1.svg") 62 stretch;
+    filter: hue-rotate(200deg) brightness(200%) saturate(10%);
+    z-index: -10;
+}
+
+.kjartan-dsl-v1-content:after {
+    content: '';
+    width: 100%;
+    height: 81px;
+    /*! background-color: red; */
+    margin: -5em;
+    float: inline-start;
+    shape-outside: circle(50px);
+    padding: 8em;
 }
 
 .kjartan-dsl-v1-feature-img {
-    width: 500px;
-    position: absolute;
-    bottom: -40px;
-    left: -10px;
-    z-index: 1;
+    width: 750px;
     background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6686631c-3c46-4e40-b13a-732a8cddb909/dk6u0c8-78f4e925-1c01-49ae-9d84-517892c1050e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzY2ODY2MzFjLTNjNDYtNGU0MC1iMTNhLTczMmE4Y2RkYjkwOVwvZGs2dTBjOC03OGY0ZTkyNS0xYzAxLTQ5YWUtOWQ4NC01MTc4OTJjMTA1MGUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.FoKe3t0zZh8bpZ4cNKm7kAIWUA3UJD_EAxl-5MrtPLM');
+    height: 460px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    inset: auto auto -120px -202px;
 }
 
 
