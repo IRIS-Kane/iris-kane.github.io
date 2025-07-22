@@ -8,7 +8,7 @@
     position: relative;
     margin: 0 auto 70px;
     padding: 3em 3em 6em;;
-    width: 400px;
+    width: 500px;
     color: #101314;
     text-align: justify;
     background-color: antiquewhite;
@@ -26,7 +26,7 @@
 }
 
 .kjartan-dsl-v1-feature {
-    width: 400px;
+    width: 500px;
     position: absolute;
     bottom: -40px;
     left: -10px;
