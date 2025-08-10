@@ -34,7 +34,7 @@
 .okiku-dsl-v1-wrapper::before {
     content: '';
     border: 100px solid;
-    border-image: url(okiku-dsl-v1-border-260.png) 128 stretch;
+    border-image: url(https://i.imgur.com/0Ckprfc.png) 128 stretch;
     border-image-outset: 37px;
     inset: 0px;
     position: absolute;
