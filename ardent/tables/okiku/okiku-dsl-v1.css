@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Balthazar');
+
+.okiku-dsl-v1-wrapper {
+    width: 600px;
+    margin: 230px auto 40px;
+    padding: 270px 28px 28px;
+    position: relative;
+    background-color: #474056;
+    background-image: linear-gradient(to bottom, transparent, #090c0896);
+    border-radius: 50px;
+}
+.okiku-dsl-v1-content {
+    padding: 2em;
+    background-image: linear-gradient(to bottom, transparent, #090c0896);
+    color: #b5b9bf;
+    border-radius: 20px;
+    position: relative;
+    text-align: justify;
+    font-family: 'Balthazar';
+}
+.okiku-dsl-v1-img {
+    width: 500px;
+    height: 500px;
+    background-image: url(https://i.imgur.com/rA7aNHb.png);
+    background-size: cover;
+    position: absolute;
+    margin: auto;
+    inset: -490px 0px auto;
+    filter: drop-shadow(2px 4px 6px black);
+}
+.okiku-dsl-v1-content b, .okiku-dsl-v1-content .mycode_b {
+    color: #b9c68e;
+}
+.okiku-dsl-v1-wrapper::before {
+    content: '';
+    border: 100px solid;
+    border-image: url(okiku-dsl-v1-border-260.png) 128 stretch;
+    border-image-outset: 37px;
+    inset: 0px;
+    position: absolute;
+    filter: hue-rotate(107deg) contrast(0.2) brightness(3.9%);
+}
+.okiku-dsl-v1-wrapper::after {
+    content: 'Code by Diesel ♥';
+    position: absolute;
+    inset: auto 0px -20px;
+    text-align: center;
+}
