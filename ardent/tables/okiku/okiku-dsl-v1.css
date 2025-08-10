@@ -45,3 +45,8 @@
     inset: auto 0px -20px;
     text-align: center;
 }
+@media (max-width: 1200px) {
+  .okiku-dsl-v1-wrapper::before, .okiku-dsl-v1-wrapper::after {
+    display: none;
+  }
+}
