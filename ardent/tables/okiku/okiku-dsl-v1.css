@@ -21,8 +21,7 @@
 .okiku-dsl-v1-img {
     width: 500px;
     height: 500px;
-    background-image: url(https://i.imgur.com/rA7aNHb.png);
-    background-size: cover;
+    background: url(https://i.imgur.com/rA7aNHb.png) -70px 0px/cover;
     position: absolute;
     margin: auto;
     inset: -490px 0px auto;
