@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap');
+
+.fiastrix-dsl-v1-fia, .fiastrix-dsl-v1-strix {
+  position: relative;
+  width: 530px;
+  margin: 40px auto 80px;
+  border: 7px solid #865c56;
+  outline: 4px solid #5a5762;
+  outline-offset: -14px;
+  background: linear-gradient(45deg, #000, #3d3a50);
+  border-radius: 300px;
+  padding: 200px 30px 470px;
+  text-align: justify;
+  color: #999;
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.fiastrix-dsl-v1-fia b, .fiastrix-dsl-v1-fia .mycode_b {
+  color: #a27d7a
+}
+
+.fiastrix-dsl-v1-strix b, .fiastrix-dsl-v1-strix .mycode_b {
+  color: #9090b5
+}
+
+@media (max-width: 1200px) {
+  .fiastrix-dsl-v1-fia svg, .fiastrix-dsl-v1-fia img, .fiastrix-dsl-v1-strix svg, .fiastrix-dsl-v1-strix img {
+    position: unset !important;
+    margin: auto;
+    display: block;
+    max-width: 70% !important;
+  }
+  .fiastrix-dsl-v1-fia, fiastrix-dsl-v1-strix {
+    outline: none !important;
+    filter: none !important;
+  }
+}
+
+#fiastrix-dsl-v1-feat {
+  position: absolute;
+  inset: auto auto -70px -30px;
+  max-width: unset;
+  width: 530px;
+}
