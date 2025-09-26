@@ -30,7 +30,7 @@
     display: block;
     max-width: 70% !important;
   }
-  .fiastrix-dsl-v1-fia, fiastrix-dsl-v1-strix {
+  .fiastrix-dsl-v1-fia, .fiastrix-dsl-v1-strix {
     outline: none !important;
     filter: none !important;
   }
