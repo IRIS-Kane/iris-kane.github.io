@@ -7,6 +7,9 @@
   margin: auto;
   filter: drop-shadow(2px 4px 6px black);
 }
+..dulce-dsl-v1::after {
+  content: 'Code by Diesel ♥';  
+}
 
 .dulce-dsl-v1-title {
   font: 72px 'Kapakana';
