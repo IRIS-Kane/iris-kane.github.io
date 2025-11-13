@@ -7,8 +7,10 @@
   margin: auto;
   filter: drop-shadow(2px 4px 6px black);
 }
-..dulce-dsl-v1::after {
-  content: 'Code by Diesel ♥';  
+.dulce-dsl-v1::after {
+  content: 'Code by Diesel ♥';
+  display: block;
+  text-align: center;
 }
 
 .dulce-dsl-v1-title {
