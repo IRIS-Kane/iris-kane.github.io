@@ -2,19 +2,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Pompiere&display=swap');
 
 .dulce-dsl-v1 {
-position: relative;width: 560px; margin: auto; filter: drop-shadow(2px 4px 6px black);
+  position: relative;
+  width: 560px;
+  margin: auto;
+  filter: drop-shadow(2px 4px 6px black);
 }
+
 .dulce-dsl-v1-title {
-font: 72px 'Kapakana';text-align: center;margin: 20px;color: #0000;border-bottom: 3px solid #000;border-image: linear-gradient(90deg, #0000, #b8860b, #b8860b, #b8860b, #FFF, #b8860b, #0000) 1;background: linear-gradient(5deg, #b8860b 40%, white, #b8860b 60%);background-clip: text;
+  font: 72px 'Kapakana';
+  text-align: center;
+  margin: 20px;
+  color: #0000;
+  border-bottom: 3px solid #000;
+  border-image: linear-gradient(90deg, #0000, #b8860b, #b8860b, #b8860b, #FFF, #b8860b, #0000) 1;
+  background: linear-gradient(5deg, #b8860b 40%, white, #b8860b 60%);
+  background-clip: text;
 }
-.dulce-dsl-v1 b, .dulce-dsl-v1 .mycode_b {
-  color: #ffc671; font-weight: normal !important;
+
+.dulce-dsl-v1 b,
+.dulce-dsl-v1 .mycode_b {
+  color: #ffc671;
+  font-weight: normal !important;
 }
-.dulce-dsl-v1 think {  font-style: italic; color: #ffc6c6;}
-.dulce-dsl-v1 hear {font-style: italic; color: #efe;}
+
+.dulce-dsl-v1 think {
+  font-style: italic;
+  color: #ffc6c6;
+}
+
+.dulce-dsl-v1 hear {
+  font-style: italic;
+  color: #efe;
+}
+
 .dulce-dsl-v1-cont {
-  position: relative;background: radial-gradient(transparent, #000D), 0 / 75px url(https://i.imgur.com/JPV7oX1.png);padding: 100px 60px;font: 19px 'Pompiere';text-align: justify;line-height: 20px;color: #cdddc3;
+  position: relative;
+  background: radial-gradient(transparent, #000D), 0 / 75px url(https://i.imgur.com/JPV7oX1.png);
+  padding: 100px 60px;
+  font: 19px 'Pompiere';
+  text-align: justify;
+  line-height: 20px;
+  color: #cdddc3;
 }
+
 .dulce-dsl-v1-bord {
-   style="position: absolute;inset: 0px;background: linear-gradient(65deg, #0000, #0000 10%, white, #0000 20%, #0000, white, #0000, #0000 80%, white, #0000 90%, #0000), #b8860b;mask: no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-top.png) top, no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-mid.png) center/100% calc(100% - 320px), no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-bot.png) bottom;"
+  position: absolute;
+  inset: 0px;
+  background: linear-gradient(65deg, #0000, #0000 10%, white, #0000 20%, #0000, white, #0000, #0000 80%, white, #0000 90%, #0000), #b8860b;
+  mask: no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-top.png) top, no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-mid.png) center/100% calc(100% - 320px), no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-bot.png) bottom;
 }
