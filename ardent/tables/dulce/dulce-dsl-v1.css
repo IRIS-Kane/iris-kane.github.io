@@ -53,6 +53,7 @@
 .dulce-dsl-v1-bord {
   position: absolute;
   inset: 0px;
-  background: linear-gradient(65deg, #0000, #0000 10%, white, #0000 20%, #0000, white, #0000, #0000 80%, white, #0000 90%, #0000), #b8860b;
+  background: linear-gradient(35deg, #0000, #0000 25%, white, #0000 30%, #0000 45%, white, #0000 55%, #0000 75%, white, #0000 80%, #0000), #b8860b;
   mask: no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-top.png) top, no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-mid.png) center/100% calc(100% - 320px), no-repeat url(https://iris-kane.github.io/ardent/tables/generic/art-deco-border-560-v1-bot.png) bottom;
+  background-attachment: fixed;
 }
