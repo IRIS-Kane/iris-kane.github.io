@@ -55,7 +55,7 @@
         'source': 'territories',
         'layout': {},
         'paint': {
-          'fill-color': '#F0F0FF',
+          'fill-color': '#FFFF00',
           'fill-opacity': [
             'case',
             ['boolean', ['feature-state', 'hover'], false],
@@ -68,39 +68,32 @@
 
     // Territory hover
     // cpy
-    
-    let feature;
-    map.addInteraction("move-handler", {
-      type: "mousemove",
-      target: {
-        "layerId": "territories-4yjvsu"
-    },
-      handler: (e) => {
-        if (e.feature) {
-          if (feature) {
-            map.setFeatureState(feature, { ["hover"]: false });
-            console.log("set hover false");
-          }
-    
-          feature = e.feature;
-          map.setFeatureState(feature, { ["hover"]: true });
-            console.log("set hover true");
+    let hoveredPolygonId = null;
+    map.on('mousemove', 'territories-fill', (e) => {
+      if (e.features.length > 0) {
+        if (hoveredPolygonId !== null) {
+          map.setFeatureState(
+            { source: 'territories', id: hoveredPolygonId },
+            { hover: false }
+          );
         }
+        hoveredPolygonId = e.features[0].id;
+        map.setFeatureState(
+          { source: 'territories', id: hoveredPolygonId },
+          { hover: true }
+        );
       }
     });
-    
-    map.addInteraction("map-handler", {
-      type: "mousemove",
-      handler: (e) => {
-        if (feature) {
-          map.setFeatureState(feature, { ["hover"]: false });
-            console.log("set hover false");
-          feature = null;
-        }
-    
-        return false;
+
+    map.on('mouseleave', 'territories-fill', () => {
+      if (hoveredPolygonId !== null) {
+        map.setFeatureState(
+          { source: 'territories', id: hoveredPolygonId },
+          { hover: false }
+        );
       }
-    });
+      hoveredPolygonId = null;
+    })
 
     map.addInteraction('my-polygon-click-interaction', {
       type: 'click',
