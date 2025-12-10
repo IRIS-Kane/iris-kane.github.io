@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Guides</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGllc2VsLXRoZS15ZWVuIiwiYSI6ImNtaXhhcmFiazAyN2czZ29sMW9wazNhbWMifQ.4Azdcl0UWLAcu_N1cw3C1w';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/diesel-the-yeen/cmiyl1uhu003d01rj0kgxc3ax', // Use the standard style for the map
+      projection: 'equirectangular', // display the map as a globe
+      zoom: 3.0, // initial zoom level, 0 is the world view, higher values zoom in
+      minZoom: 2,
+      maxZoom: 6,
+      center: [-3, -2] // center the map on this longitude and latitude
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+    //map.scrollZoom.disable();
+
+    map.on('style.load', () => {
+      map.setFog({}); // Set the default atmosphere style
+
+
+      map.addSource('territories', {
+        'type': 'geojson',
+        'data': 'territories.geojson'
+      });
+
+      // Add Territories layer
+      map.addLayer({
+        'id': 'territories-fill',
+        'type': 'fill',
+        'source': 'territories',
+        'layout': {},
+        'paint': {
+          'fill-color': '#F0FA',
+          'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            1,
+            0.5
+          ]
+        }
+      });
+    });
+
+    // Territory hover
+    // cpy
+    /*
+    let feature;
+    map.addInteraction("move-handler", {
+      type: "mousemove",
+      target: {
+        "layerId": "territories-4yjvsu"
+    },
+      handler: (e) => {
+        if (e.feature) {
+          if (feature) {
+            map.setFeatureState(feature, { ["state"]: false });
+          }
+    
+          feature = e.feature;
+          map.setFeatureState(feature, { ["state"]: true });
+        }
+      }
+    });
+    
+    map.addInteraction("map-handler", {
+      type: "mousemove",
+      handler: (e) => {
+        if (feature) {
+          map.setFeatureState(feature, { ["state"]: false });
+          feature = null;
+        }
+    
+        return false;
+      }
+    });*/
+
+    map.addInteraction('my-polygon-click-interaction', {
+      type: 'click',
+      target: { "layerId": "territories-4yjvsu" },
+      handler: (e) => {
+        map.setFeatureState(e.feature, { highlight: true });
+        console.log('Click event');
+        console.log(e.feature.id);
+      }
+    });
+
+    // /cpy
+
+
+  </script>
+
+</body>
+
+</html>
