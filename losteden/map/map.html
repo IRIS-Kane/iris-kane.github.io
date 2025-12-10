@@ -55,7 +55,7 @@
         'source': 'territories',
         'layout': {},
         'paint': {
-          'fill-color': '#FFFF00',
+          'fill-color': '#00FF00',
           'fill-opacity': [
             'case',
             ['boolean', ['feature-state', 'hover'], false],
@@ -64,37 +64,37 @@
           ]
         }
       });
-    });
 
-    // Territory hover
-    // cpy
-    let hoveredPolygonId = null;
-    map.on('mousemove', 'territories-fill', (e) => {
-      if (e.features.length > 0) {
+
+      // Territory hover
+      // cpy
+      let hoveredPolygonId = null;
+      map.on('mousemove', 'territories-fill', (e) => {
+        if (e.features.length > 0) {
+          if (hoveredPolygonId !== null) {
+            map.setFeatureState(
+              { source: 'territories', id: hoveredPolygonId },
+              { hover: false }
+            );
+          }
+          hoveredPolygonId = e.features[0].id;
+          map.setFeatureState(
+            { source: 'territories', id: hoveredPolygonId },
+            { hover: true }
+          );
+        }
+      });
+
+      map.on('mouseleave', 'territories-fill', () => {
         if (hoveredPolygonId !== null) {
           map.setFeatureState(
             { source: 'territories', id: hoveredPolygonId },
             { hover: false }
           );
         }
-        hoveredPolygonId = e.features[0].id;
-        map.setFeatureState(
-          { source: 'territories', id: hoveredPolygonId },
-          { hover: true }
-        );
-      }
+        hoveredPolygonId = null;
+      })
     });
-
-    map.on('mouseleave', 'territories-fill', () => {
-      if (hoveredPolygonId !== null) {
-        map.setFeatureState(
-          { source: 'territories', id: hoveredPolygonId },
-          { hover: false }
-        );
-      }
-      hoveredPolygonId = null;
-    })
-
     map.addInteraction('my-polygon-click-interaction', {
       type: 'click',
       target: { "layerId": "territories-4yjvsu" },
