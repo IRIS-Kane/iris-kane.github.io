@@ -20,10 +20,42 @@
       width: 100%;
     }
   </style>
+  <style>
+    .territory-popup {
+      min-width: 300px;
+    }
+
+    .territory-popup img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+
+    .territory-popup .mapboxgl-popup-content {
+      background: linear-gradient(0deg, #0000 90%, #fff5), linear-gradient(90deg, #0000 90%, #0006), linear-gradient(180deg, #0000 90%, #0006), linear-gradient(270deg, #0000 90%, #FFF3), #151520DD;
+      border-radius: 8px;
+      border: 2px solid #6c6c6c;
+    }
+
+    .territory-popup h1 {
+      text-align: center;
+      color: #95ccff;
+      font-size: 20px;
+    }
+
+    .territory-popup p {
+      color: #eee;
+    }
+
+    .territory-popup .mapboxgl-popup-tip {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
   <div id="map"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGllc2VsLXRoZS15ZWVuIiwiYSI6ImNtaXhhcmFiazAyN2czZ29sMW9wazNhbWMifQ.4Azdcl0UWLAcu_N1cw3C1w';
     const map = new mapboxgl.Map({
@@ -44,8 +76,9 @@
 
 
       map.addSource('territories', {
-        'type': 'geojson',
-        'data': 'territories.geojson'
+        type: 'geojson',
+        data: 'territories.geojson',
+        generateId: true
       });
 
       // Add Territories layer
@@ -55,13 +88,14 @@
         'source': 'territories',
         'layout': {},
         'paint': {
-          'fill-color': '#00FF00',
+          'fill-color': '#FFFFFF',
           'fill-opacity': [
             'case',
             ['boolean', ['feature-state', 'hover'], false],
-            1,
-            0.5
-          ]
+            0.4,
+            0.2
+          ],
+          'stroke-color': '#F00'
         }
       });
 
@@ -94,15 +128,21 @@
         }
         hoveredPolygonId = null;
       })
-    });
-    map.addInteraction('my-polygon-click-interaction', {
-      type: 'click',
-      target: { "layerId": "territories-4yjvsu" },
-      handler: (e) => {
-        map.setFeatureState(e.feature, { highlight: true });
-        console.log('Click event');
-        console.log(e.feature.id);
-      }
+
+      map.on('click', 'territories-fill', (e) => {
+        let feature = e.features[0]
+
+        const coordinates = turf.centroid(feature.geometry).geometry.coordinates;
+        map.flyTo({ center: coordinates, zoom: 4.5});
+
+        const image = "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=400";
+        const innerHTML = `<img src="${image}"/><h1>${feature.properties.Name}</h1><p>${feature.properties.Desc}</p>`;
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .addClassName("territory-popup")
+          .setHTML(innerHTML)
+          .addTo(map);
+      });
     });
 
   </script>
