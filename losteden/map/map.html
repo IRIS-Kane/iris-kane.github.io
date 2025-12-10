@@ -68,7 +68,7 @@
 
     // Territory hover
     // cpy
-    /*
+    
     let feature;
     map.addInteraction("move-handler", {
       type: "mousemove",
@@ -78,11 +78,13 @@
       handler: (e) => {
         if (e.feature) {
           if (feature) {
-            map.setFeatureState(feature, { ["state"]: false });
+            map.setFeatureState(feature, { ["hover"]: false });
+            console.log("set hover false");
           }
     
           feature = e.feature;
-          map.setFeatureState(feature, { ["state"]: true });
+          map.setFeatureState(feature, { ["hover"]: true });
+            console.log("set hover true");
         }
       }
     });
@@ -91,13 +93,14 @@
       type: "mousemove",
       handler: (e) => {
         if (feature) {
-          map.setFeatureState(feature, { ["state"]: false });
+          map.setFeatureState(feature, { ["hover"]: false });
+            console.log("set hover false");
           feature = null;
         }
     
         return false;
       }
-    });*/
+    });
 
     map.addInteraction('my-polygon-click-interaction', {
       type: 'click',
@@ -108,9 +111,6 @@
         console.log(e.feature.id);
       }
     });
-
-    // /cpy
-
 
   </script>
 
