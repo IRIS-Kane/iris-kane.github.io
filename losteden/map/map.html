@@ -13,7 +13,9 @@
       padding: 0;
     }
 
-    canvas {background: #556871;}
+    canvas {
+      background: #556871;
+    }
 
     #map {
       position: absolute;
@@ -68,7 +70,7 @@
       minZoom: 2,
       maxZoom: 6,
       center: [-3, -2], // center the map on this longitude and latitude
-      maxBounds: [[-120, -60],[120, 60]]
+      maxBounds: [[-120, -60], [120, 60]]
     });
 
     map.addControl(new mapboxgl.NavigationControl());
@@ -89,16 +91,25 @@
         'id': 'territories-fill',
         'type': 'fill',
         'source': 'territories',
-        'layout': {},
         'paint': {
           'fill-color': '#FFFFFF',
           'fill-opacity': [
             'case',
             ['boolean', ['feature-state', 'hover'], false],
             0.4,
-            0.2
-          ],
-          'stroke-color': '#F00'
+            0.0],
+          'line-color': '#F00'
+        }
+      });
+      map.addLayer({
+        'id': 'territories-line',
+        'type': 'line',
+        'source': 'territories',
+        'paint': {
+          'line-color': '#FFF',
+          'line-opacity': 0.4,
+          'line-width': 2,
+          'line-dasharray': [1, 1]
         }
       });
 
@@ -135,8 +146,8 @@
       map.on('click', 'territories-fill', (e) => {
         let feature = e.features[0]
 
-        const coordinates = turf.centroid(feature.geometry).geometry.coordinates;
-        map.flyTo({ center: coordinates, zoom: 4.5});
+        const coordinates = turf.center(feature.geometry).geometry.coordinates;
+        map.flyTo({ center: coordinates, zoom: 4.5, speed: 0.75 });
 
         const image = "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=400";
         const innerHTML = `<img src="${image}"/><h1>${feature.properties.Name}</h1><p>${feature.properties.Desc}</p>`;
