@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Armada Map</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      background: #556871;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+  <style>
+    .territory-popup {
+      min-width: 140px;
+    }
+
+    .territory-popup .mapboxgl-popup-content {
+      background: #3b4752dd;
+      border-radius: 8px;
+      border: 2px solid #342558;
+    }
+
+    .territory-popup h1 {
+      text-align: center;
+      color: #ffdd95;
+      font-size: 20px;
+    }
+
+    .territory-popup p {
+      color: #eee;
+    }
+
+    .territory-popup .mapboxgl-popup-tip {
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGllc2VsLXRoZS15ZWVuIiwiYSI6ImNtaXhhcmFiazAyN2czZ29sMW9wazNhbWMifQ.4Azdcl0UWLAcu_N1cw3C1w';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/diesel-the-yeen/cmj252w4j009r01rjaa82d1jo/draft',
+      projection: 'equirectangular',
+      zoom: 3.5,
+      minZoom: 2,
+      maxZoom: 6,
+      center: [-1.7, -2.6],
+      maxBounds: [[-120, -60], [120, 60]]
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    map.on('style.load', () => {
+      map.addSource('zones', {
+        type: 'geojson',
+        data: 'zones.geojson',
+        generateId: true
+      });
+
+      // Add zones layer
+      map.addLayer({
+        'id': 'zones-fill',
+        'type': 'fill',
+        'source': 'zones',
+        'paint': {
+          'fill-color': '#FFFFFF',
+          'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
+            0.4,
+            0.0],
+          'line-color': '#F00'
+        }
+      });
+      map.addLayer({
+        'id': 'zones-line',
+        'type': 'line',
+        'source': 'zones',
+        'paint': {
+          'line-color': '#FFF',
+          'line-opacity': 0.4,
+          'line-width': 2,
+          'line-dasharray': [1, 1]
+        }
+      });
+
+
+      // zones hover
+      let hoveredPolygonId = null;
+      map.on('mousemove', 'zones-fill', (e) => {
+        if (e.features.length > 0) {
+          if (hoveredPolygonId !== null) {
+            map.setFeatureState(
+              { source: 'zones', id: hoveredPolygonId },
+              { hover: false }
+            );
+          }
+          hoveredPolygonId = e.features[0].id;
+          map.setFeatureState(
+            { source: 'zones', id: hoveredPolygonId },
+            { hover: true }
+          );
+        }
+      });
+
+      map.on('mouseleave', 'zones-fill', () => {
+        if (hoveredPolygonId !== null) {
+          map.setFeatureState(
+            { source: 'zones', id: hoveredPolygonId },
+            { hover: false }
+          );
+        }
+        hoveredPolygonId = null;
+      })
+
+      map.on('click', 'zones-fill', (e) => {
+        let feature = e.features[0]
+
+        const coordinates = turf.center(feature.geometry).geometry.coordinates;
+        map.flyTo({ center: coordinates, zoom: 4.5, speed: 0.75 });
+
+        const innerHTML = `<h1>${feature.properties.title}</h1><p>${feature.properties.content}</p>`;
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .addClassName("territory-popup")
+          .setHTML(innerHTML)
+          .addTo(map);
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>
