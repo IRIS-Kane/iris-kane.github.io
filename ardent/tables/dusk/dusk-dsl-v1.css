@@ -3,7 +3,7 @@
 .dusk-dsl-v1 {
     position: relative;
     width: 700px;
-    margin: 0px auto 0px;
+    margin: 40px auto 0px;
     min-height: 980px;
     background: linear-gradient(180deg, #0000 640px, #000 740px), url('https://images.unsplash.com/photo-1682459096899-e57fde63d4d5?q=60&amp;w=800') center -300px/100%;
     box-shadow: 2px 2px 12px #000D;
@@ -29,7 +29,7 @@
     background: #000A;
     color: #DDD;
     text-align: justify;
-    padding: 3em 2em 2em;
+    padding: 3em 2em 3em;
     left: 230px;
     margin: 220px 0 30px;
     backdrop-filter: blur(12px);
