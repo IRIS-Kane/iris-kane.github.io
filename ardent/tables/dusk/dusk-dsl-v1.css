@@ -71,3 +71,10 @@
 
     .dusk-dsl-v1-bflourish1 {}
 }
+
+.dusk-dsl-v1 video {
+    filter: opacity(0.5) brightness(2) hue-rotate(270deg);
+    position: absolute;
+    bottom: 0;
+    mask: linear-gradient(0deg, white, transparent);
+}
