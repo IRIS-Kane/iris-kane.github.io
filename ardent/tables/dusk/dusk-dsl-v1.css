@@ -1,0 +1,73 @@
+.dusk-dsl-v1 {
+    position: relative;
+    width: 700px;
+    margin: 0px auto 0px;
+    min-height: 980px;
+    background: linear-gradient(180deg, #0000 640px, #000 740px), url('https://images.unsplash.com/photo-1682459096899-e57fde63d4d5?q=60&amp;w=800') center -300px/100%;
+    box-shadow: 2px 2px 12px #000D;
+    overflow: hidden;
+}
+
+.dusk-dsl-v1::after {
+  content: 'Code by Diesel ♥';
+  display: block;
+  text-align: center;
+}
+
+.dusk-dsl-v1-img {
+    background: no-repeat url('https://i.imgur.com/6PHMLqz.png') -116px/1000px;
+    position: absolute;
+    width: 100%;
+    height: 980px;
+}
+
+.dusk-dsl-v1-cont {
+    position: relative;
+    width: 440px;
+    background: #000A;
+    color: #DDD;
+    text-align: justify;
+    padding: 3em 2em 2em;
+    left: 230px;
+    margin: 220px 0 30px;
+    backdrop-filter: blur(12px);
+    filter: drop-shadow(0 0 10px #000);
+}
+
+.dusk-dsl-v1-bflourish1 {
+    background: #888;
+    position: absolute;
+    inset: 0px;
+    mask: no-repeat url('https://iris-kane.github.io/ardent/tables/generic/flourish-corner-2-bl.svg') left bottom/80px, no-repeat url('https://iris-kane.github.io/ardent/tables/generic/flourish-corner-2-tr.svg') right top/80px;
+    z-index: -1;
+}
+
+.dusk-dsl-v1-cont b,
+.dusk-dsl-v1-cont .mycode_b {
+    background: linear-gradient(0deg, #774100, #f96f18);
+    color: #0000;
+    background-clip: text;
+    font-family: 'Romanesco';
+    font-size: 20px;
+    line-height: 20px;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+@media(max-width: 1200px) {
+    .dusk-dsl-v1 video {
+        display: none;
+    }
+
+    .dusk-dsl-v1 {
+        min-height: unset !important;
+    }
+
+    .actual_post div .dusk-dsl-v1-cont {
+        position: unset !important;
+        filter: unset !important;
+        padding: 3em 0.4em !important;
+    }
+
+    .dusk-dsl-v1-bflourish1 {}
+}
