@@ -56,3 +56,13 @@
     filter: brightness(1);
     background-attachment: fixed;
 }
+
+@media(max-width: 1200px) {
+    .eren-dsl-v1 {
+        font-size: unset;
+        filter: unset;
+    }
+    .eren-dsl-v1::after {
+        content: unset;
+    }
+}
