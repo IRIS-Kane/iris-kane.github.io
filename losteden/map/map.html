@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Armada Map</title>
+  <title>World Map</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.js"></script>
@@ -23,21 +23,26 @@
       bottom: 0;
       width: 100%;
     }
-  </style>
-  <style>
+
     .territory-popup {
-      min-width: 140px;
+      min-width: 300px;
+    }
+
+    .territory-popup img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
     }
 
     .territory-popup .mapboxgl-popup-content {
-      background: #3b4752dd;
+      background: linear-gradient(0deg, #0000 90%, #fff5), linear-gradient(90deg, #0000 90%, #0006), linear-gradient(180deg, #0000 90%, #0006), linear-gradient(270deg, #0000 90%, #FFF3), #151520DD;
       border-radius: 8px;
-      border: 2px solid #342558;
+      border: 2px solid #6c6c6c;
     }
 
     .territory-popup h1 {
       text-align: center;
-      color: #ffdd95;
+      color: #95ccff;
       font-size: 20px;
     }
 
@@ -45,7 +50,15 @@
       color: #eee;
     }
 
-    .territory-popup .mapboxgl-popup-tip {}
+    .territory-popup .mapboxgl-popup-tip {
+      display: none;
+    }
+
+    .territory-popup .mapboxgl-popup-close-button {
+      background: #D2042D;
+      color: white;
+      border-radius: 4px;
+    }
   </style>
 </head>
 
@@ -56,29 +69,34 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGllc2VsLXRoZS15ZWVuIiwiYSI6ImNtaXhhcmFiazAyN2czZ29sMW9wazNhbWMifQ.4Azdcl0UWLAcu_N1cw3C1w';
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/diesel-the-yeen/cmj252w4j009r01rjaa82d1jo/draft',
-      projection: 'equirectangular',
-      zoom: 4.5,
+      // The style here is a mapbox link where the base map is loaded from mapbox's CDN. The base map has been tiled and renders at different resolutions.
+      // Although possible to load a blank mapbox style and store the basemap locally, it's quite large and serving it though mapbox is cleaner.
+      style: 'mapbox://styles/diesel-the-yeen/cmiyl1uhu003d01rj0kgxc3ax',
+      projection: 'equirectangular',// Change this to 'globe' for some funsies.
+      zoom: 3.0,
       minZoom: 2,
       maxZoom: 6,
-      center: [-1.7, -2.6],
+      center: [-3, -2],
       maxBounds: [[-120, -60], [120, 60]]
     });
 
     map.addControl(new mapboxgl.NavigationControl());
 
     map.on('style.load', () => {
-      map.addSource('zones', {
+      // Remove this if not using a globe.
+      map.setFog({});
+
+      map.addSource('territories', {
         type: 'geojson',
-        data: 'zones.geojson',
+        data: 'territories.geojson',
         generateId: true
       });
 
-      // Add zones layer
+      // Add Territories layer
       map.addLayer({
-        'id': 'zones-fill',
+        'id': 'territories-fill',
         'type': 'fill',
-        'source': 'zones',
+        'source': 'territories',
         'paint': {
           'fill-color': '#FFFFFF',
           'fill-opacity': [
@@ -90,9 +108,9 @@
         }
       });
       map.addLayer({
-        'id': 'zones-line',
+        'id': 'territories-line',
         'type': 'line',
-        'source': 'zones',
+        'source': 'territories',
         'paint': {
           'line-color': '#FFF',
           'line-opacity': 0.4,
@@ -100,60 +118,46 @@
           'line-dasharray': [1, 1]
         }
       });
-      map.addLayer({
-        'id': 'zones-labels',
-        'type': 'symbol',
-        'source': 'zones',
-        'layout': {
-          'text-field': ['get', 'title'],
-          'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-          'text-radial-offset': 0.5,
-          'text-justify': 'auto',
-          'text-size': 12
-        },
-        'paint': {
-          'text-color': '#FFF',
-          'text-halo-width': 1,
-          'text-halo-color': '#000'
-        }
-      });
 
 
-      // zones hover
+      // Territory hover
       let hoveredPolygonId = null;
-      map.on('mousemove', 'zones-fill', (e) => {
+      map.on('mousemove', 'territories-fill', (e) => {
         if (e.features.length > 0) {
           if (hoveredPolygonId !== null) {
             map.setFeatureState(
-              { source: 'zones', id: hoveredPolygonId },
+              { source: 'territories', id: hoveredPolygonId },
               { hover: false }
             );
           }
           hoveredPolygonId = e.features[0].id;
           map.setFeatureState(
-            { source: 'zones', id: hoveredPolygonId },
+            { source: 'territories', id: hoveredPolygonId },
             { hover: true }
           );
         }
       });
 
-      map.on('mouseleave', 'zones-fill', () => {
+      map.on('mouseleave', 'territories-fill', () => {
         if (hoveredPolygonId !== null) {
           map.setFeatureState(
-            { source: 'zones', id: hoveredPolygonId },
+            { source: 'territories', id: hoveredPolygonId },
             { hover: false }
           );
         }
         hoveredPolygonId = null;
       })
 
-      map.on('click', 'zones-fill', (e) => {
-        let feature = e.features[0]
+      // Territory Click
+      map.on('click', 'territories-fill', (e) => {
+        const feature = e.features[0]
 
         const coordinates = turf.center(feature.geometry).geometry.coordinates;
         map.flyTo({ center: coordinates, zoom: 4.5, speed: 0.75 });
 
-        const innerHTML = `<h1>${feature.properties.title}</h1><p>${feature.properties.content}</p>`;
+        let image = feature.properties.IMGSRC;
+        image ??= "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=400"; // Default territory image
+        const innerHTML = `<img src="${image}"/><h1>${feature.properties.Name}</h1><p>${feature.properties.Desc}</p>`;
         new mapboxgl.Popup()
           .setLngLat(coordinates)
           .addClassName("territory-popup")
