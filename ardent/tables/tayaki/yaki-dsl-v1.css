@@ -68,3 +68,10 @@
     filter: drop-shadow(2px 4px 6px black);
     z-index: 1;
 }
+
+@media(max-width: 1200px) {
+    .yaki-dsl-v1 img { width: 90%; position: unset;}
+    .yaki-dsl-v1-cont::before,
+    .yaki-dsl-v1-cont::after {content: unset;}
+    .yaki-dsl-v1::after {content: unset;}
+}
