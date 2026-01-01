@@ -45,9 +45,7 @@
       color: #eee;
     }
 
-    .territory-popup .mapboxgl-popup-tip {
-      
-    }
+    .territory-popup .mapboxgl-popup-tip {}
   </style>
 </head>
 
@@ -60,7 +58,7 @@
       container: 'map',
       style: 'mapbox://styles/diesel-the-yeen/cmj252w4j009r01rjaa82d1jo/draft',
       projection: 'equirectangular',
-      zoom: 3.5,
+      zoom: 4.5,
       minZoom: 2,
       maxZoom: 6,
       center: [-1.7, -2.6],
@@ -100,6 +98,23 @@
           'line-opacity': 0.4,
           'line-width': 2,
           'line-dasharray': [1, 1]
+        }
+      });
+      map.addLayer({
+        'id': 'zones-labels',
+        'type': 'symbol',
+        'source': 'zones',
+        'layout': {
+          'text-field': ['get', 'title'],
+          'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+          'text-radial-offset': 0.5,
+          'text-justify': 'auto',
+          'text-size': 12
+        },
+        'paint': {
+          'text-color': '#FFF',
+          'text-halo-width': 1,
+          'text-halo-color': '#000'
         }
       });
 
