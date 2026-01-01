@@ -12,7 +12,11 @@
 }
 
 .eren-dsl-v1::after {
-    content: 'Code by Diesel ♥';
+  content: 'Code by Diesel ♥';
+  position: absolute;
+  inset: auto 116px 15px auto;
+  color: #666;
+  font-size: 8pt;
 }
 
 .eren-dsl-v1 speak {
