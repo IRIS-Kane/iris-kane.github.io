@@ -5,7 +5,8 @@
     border: 2px solid #AAA;
     background: no-repeat url('https://images.unsplash.com/photo-1557700391-33f4c2d0ff58?q=80&w=1200') center/cover;
     padding: 2em 2em 20em;
-    color: #EEE
+    color: #EEE;
+    box-shadow: 2px 2px 16px #000;
 }
 
 .yaki-dsl-v1-cont {
@@ -25,6 +26,7 @@
     content: '';
     position: absolute;
     inset: -52px 0px;
+    z-index: -1;
 }
 
 .yaki-dsl-v1-cont::before {
@@ -39,11 +41,12 @@
 
 .yaki-dsl-v1 b,
 .yaki-dsl-v1 .mycode_bb {
-    color: #738bb0;
+    color: #455d82;
 }
 
 .yaki-dsl-v1 t {
-    font-size: 30px;
+    font-size: 44px;
+    line-height: 44px;
     font-family: 'Jim Nightshade';
     display: block;
     margin: 10px;
