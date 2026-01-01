@@ -11,7 +11,7 @@
     font-size: 15px;
 }
 
-.eren-dsl-v1 {
+.eren-dsl-v1::after {
     content: 'Code by Diesel ♥';
 }
 
