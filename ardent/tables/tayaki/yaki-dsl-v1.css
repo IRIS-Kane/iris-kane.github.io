@@ -41,7 +41,9 @@
 
 .yaki-dsl-v1::after {
     content: 'Code by Diesel ♥';
-
+    position: absolute;
+    inset: auto 2px -20px auto;
+    color: #888;
 }
 
 .yaki-dsl-v1 b,
@@ -64,4 +66,5 @@
     width: 640px;
     max-width: unset;
     filter: drop-shadow(2px 4px 6px black);
+    z-index: 1;
 }
