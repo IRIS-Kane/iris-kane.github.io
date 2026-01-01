@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>World Map</title>
+  <title>Armada Map</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.17.0-beta.1/mapbox-gl.js"></script>
@@ -26,24 +26,18 @@
   </style>
   <style>
     .territory-popup {
-      min-width: 300px;
-    }
-
-    .territory-popup img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
+      min-width: 140px;
     }
 
     .territory-popup .mapboxgl-popup-content {
-      background: linear-gradient(0deg, #0000 90%, #fff5), linear-gradient(90deg, #0000 90%, #0006), linear-gradient(180deg, #0000 90%, #0006), linear-gradient(270deg, #0000 90%, #FFF3), #151520DD;
+      background: #3b4752dd;
       border-radius: 8px;
-      border: 2px solid #6c6c6c;
+      border: 2px solid #342558;
     }
 
     .territory-popup h1 {
       text-align: center;
-      color: #95ccff;
+      color: #ffdd95;
       font-size: 20px;
     }
 
@@ -51,9 +45,7 @@
       color: #eee;
     }
 
-    .territory-popup .mapboxgl-popup-tip {
-      display: none;
-    }
+    .territory-popup .mapboxgl-popup-tip {}
   </style>
 </head>
 
@@ -64,33 +56,29 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGllc2VsLXRoZS15ZWVuIiwiYSI6ImNtaXhhcmFiazAyN2czZ29sMW9wazNhbWMifQ.4Azdcl0UWLAcu_N1cw3C1w';
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/diesel-the-yeen/cmiyl1uhu003d01rj0kgxc3ax', // Use the standard style for the map
-      projection: 'equirectangular', // display the map as a globe
-      zoom: 3.0, // initial zoom level, 0 is the world view, higher values zoom in
+      style: 'mapbox://styles/diesel-the-yeen/cmj252w4j009r01rjaa82d1jo/draft',
+      projection: 'equirectangular',
+      zoom: 4.5,
       minZoom: 2,
       maxZoom: 6,
-      center: [-3, -2], // center the map on this longitude and latitude
+      center: [-1.7, -2.6],
       maxBounds: [[-120, -60], [120, 60]]
     });
 
     map.addControl(new mapboxgl.NavigationControl());
-    //map.scrollZoom.disable();
 
     map.on('style.load', () => {
-      map.setFog({}); // Set the default atmosphere style
-
-
-      map.addSource('territories', {
+      map.addSource('zones', {
         type: 'geojson',
-        data: 'territories.geojson',
+        data: 'zones.geojson',
         generateId: true
       });
 
-      // Add Territories layer
+      // Add zones layer
       map.addLayer({
-        'id': 'territories-fill',
+        'id': 'zones-fill',
         'type': 'fill',
-        'source': 'territories',
+        'source': 'zones',
         'paint': {
           'fill-color': '#FFFFFF',
           'fill-opacity': [
@@ -102,9 +90,9 @@
         }
       });
       map.addLayer({
-        'id': 'territories-line',
+        'id': 'zones-line',
         'type': 'line',
-        'source': 'territories',
+        'source': 'zones',
         'paint': {
           'line-color': '#FFF',
           'line-opacity': 0.4,
@@ -112,45 +100,60 @@
           'line-dasharray': [1, 1]
         }
       });
+      map.addLayer({
+        'id': 'zones-labels',
+        'type': 'symbol',
+        'source': 'zones',
+        'layout': {
+          'text-field': ['get', 'title'],
+          'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+          'text-radial-offset': 0.5,
+          'text-justify': 'auto',
+          'text-size': 12
+        },
+        'paint': {
+          'text-color': '#FFF',
+          'text-halo-width': 1,
+          'text-halo-color': '#000'
+        }
+      });
 
 
-      // Territory hover
-      // cpy
+      // zones hover
       let hoveredPolygonId = null;
-      map.on('mousemove', 'territories-fill', (e) => {
+      map.on('mousemove', 'zones-fill', (e) => {
         if (e.features.length > 0) {
           if (hoveredPolygonId !== null) {
             map.setFeatureState(
-              { source: 'territories', id: hoveredPolygonId },
+              { source: 'zones', id: hoveredPolygonId },
               { hover: false }
             );
           }
           hoveredPolygonId = e.features[0].id;
           map.setFeatureState(
-            { source: 'territories', id: hoveredPolygonId },
+            { source: 'zones', id: hoveredPolygonId },
             { hover: true }
           );
         }
       });
 
-      map.on('mouseleave', 'territories-fill', () => {
+      map.on('mouseleave', 'zones-fill', () => {
         if (hoveredPolygonId !== null) {
           map.setFeatureState(
-            { source: 'territories', id: hoveredPolygonId },
+            { source: 'zones', id: hoveredPolygonId },
             { hover: false }
           );
         }
         hoveredPolygonId = null;
       })
 
-      map.on('click', 'territories-fill', (e) => {
+      map.on('click', 'zones-fill', (e) => {
         let feature = e.features[0]
 
         const coordinates = turf.center(feature.geometry).geometry.coordinates;
         map.flyTo({ center: coordinates, zoom: 4.5, speed: 0.75 });
 
-        const image = "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=400";
-        const innerHTML = `<img src="${image}"/><h1>${feature.properties.Name}</h1><p>${feature.properties.Desc}</p>`;
+        const innerHTML = `<h1>${feature.properties.title}</h1><p>${feature.properties.content}</p>`;
         new mapboxgl.Popup()
           .setLngLat(coordinates)
           .addClassName("territory-popup")
