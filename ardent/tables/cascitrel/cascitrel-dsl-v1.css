@@ -1,6 +1,15 @@
-.cascitrel-dsl-v1.dsl-relay b,
-.cascitrel-dsl-v1.dsl-relay .mycode_b {
+.cascitrel-dsl-v1.dsl-relay b, .cascitrel-dsl-v1.dsl-relay .mycode_b {
     color: #ffbb7f;
+    font-weight: normal;
+}
+
+.cascitrel-dsl-v1.dsl-cit b, .cascitrel-dsl-v1.dsl-cit .mycode_b {
+    color: #7ac6ff;
+    font-weight: normal;
+}
+
+.cascitrel-dsl-v1.dsl-cassie b, .cascitrel-dsl-v1.dsl-cassie .mycode_b {
+    color: #ea95f2;
     font-weight: normal;
 }
 
