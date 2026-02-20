@@ -3,8 +3,21 @@
   width: 600px;
   margin: auto;
   text-align: justify;
+  padding: 130px;
+  min-height: 700px;
+  background: #222;
 }
 
-.okiku-dsl-v2~link {
-  outline: 1px solid red;
+.okiku-dsl-v2 link {
+  display: block;
+  position: absolute;
+  inset: 0px;
+  background: #859ea3;
+  pointer-events: none;
+  mask: no-repeat url('https://iris-kane.github.io/ardent/tables/okiku/noun-7705613-top.png') center top / 100%, no-repeat url('https://iris-kane.github.io/ardent/tables/okiku/noun-7705613-mid.png') center center / 100% calc(100%  - 599px), no-repeat url('https://iris-kane.github.io/ardent/tables/okiku/noun-7705613-bot.png') center bottom / 100%;
+}
+
+.okiku-dsl-v2 > div {
+  padding: 20px;
+  background: #FFFA;
 }
