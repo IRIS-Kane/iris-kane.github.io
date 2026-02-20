@@ -1,0 +1,10 @@
+.okiku-dsl-v2 {
+  position: relative;
+  width: 600px;
+  margin: auto;
+  text-align: justify;
+}
+
+.okiku-dsl-v2~link {
+  outline: 1px solid red;
+}
