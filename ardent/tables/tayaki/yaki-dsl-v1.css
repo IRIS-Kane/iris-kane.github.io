@@ -62,7 +62,7 @@
 
 .yaki-dsl-v1 img {
     position: absolute;
-    inset: auto auto -80px -80px;
+    inset: auto auto -150px -80px;
     width: 640px;
     max-width: unset;
     filter: drop-shadow(2px 4px 6px black);
